@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drug List</title>
+</head>
+<body>
+    <h1>Drug List</h1>
+    <ul>
+        {% for product in products %}
+            <li>{{ drugs.drug_name }} - ${{ drugs.drug_id }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
