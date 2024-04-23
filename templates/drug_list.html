@@ -1,14 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Drug List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drug Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #E7C8F6;
+        }
+        header {
+            background-color: #a8dda8;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td {
+            background-color: #FFFFFF;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label, input, button {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Drug List</h1>
-    <ul>
-        {% for product in products %}
-            <li>{{ drugs.drug_name }} - ${{ drugs.drug_id }}</li>
-        {% endfor %}
-    </ul>
+    <header>
+        <h1>Drug Search</h1>
+    </header>
+    <main>
+        
+
+        <form method="get" action="">
+            <label for="drug_name">Search by Drug Name:</label>
+            <input type="text" id="drug_name" name="drug_name">
+            <button type="submit">Search</button>
+        </form>
+
+        {% if result %}
+            <p>{{ result }}</p>
+        {% elif drugs %}
+            <table>
+            <tr>
+                <th>Drug ID</th>
+                <th>Drug Name</th>
+                <th>Associated Brands</th>
+            </tr>
+            {% for drug in drugs %}
+            <tr>
+                <td>{{ drug.drug_id }}</td>
+                <td>{{ drug.drug_name }}</td>
+                <td>{{ drug.brands|default:"No brand info" }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+        {% elif error %}
+            <p>{{ error }}</p>
+        {% endif %}
+    </main>
 </body>
 </html>

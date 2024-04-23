@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>brands</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>brands</h1>
+    <table>
+        <tr>
+            <th>brands</th>
+        </tr>
+        {% for brand in brands %}
+            <tr>
+                <td>{{ brand.brand_name1 }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
